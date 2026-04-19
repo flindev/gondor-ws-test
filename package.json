@@ -1,0 +1,30 @@
+{
+  "name": "gondor-ws-test",
+  "private": true,
+  "description": "The beacons of Gondor are lit. Pusher-protocol-compatible WebSocket broadcasting on Cloudflare Workers + Durable Objects — a drop-in alternative to Pusher/Reverb for Laravel Echo.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "types": "wrangler types"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260101.0",
+    "@types/node": "^25.6.0",
+    "typescript": "^5.7.2",
+    "wrangler": "^4.0.0"
+  },
+  "cloudflare": {
+    "bindings": {
+      "APP_ID": {
+        "description": "Public app identifier used in REST URLs (`/apps/{APP_ID}/events`). Must match `PUSHER_APP_ID` in your Laravel `.env`. Default `gondor-app` — safe to keep or customize."
+      },
+      "APP_KEY": {
+        "description": "Public app key sent by clients on the WebSocket handshake (`wss://host/app/{APP_KEY}`). **Ships in your frontend bundle** — not a secret, but pick something non-obvious. Must match `PUSHER_APP_KEY` in Laravel."
+      },
+      "APP_SECRET": {
+        "description": "**Secret.** Shared HMAC key used to sign channel subscriptions and the REST API. Must match `PUSHER_APP_SECRET` in Laravel and must be **at least 16 characters**. The server returns 503 until this is set to a non-default value. Generate one with `openssl rand -hex 32`."
+      }
+    }
+  }
+}

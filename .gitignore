@@ -1,0 +1,19 @@
+node_modules/
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+dist/
+worker-configuration.d.ts
+.DS_Store
+
+# Local editor/tooling state — don't ship to a public fork
+.claude/
+.vscode/
+.idea/
+.cursor/
+
+# OS / editor noise
+*.swp
+*.swo
+Thumbs.db

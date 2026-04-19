@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gondor-ws-test",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+
+  "durable_objects": {
+    "bindings": [
+      { "name": "BEACON", "class_name": "Beacon" }
+    ]
+  },
+
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Beacon"] }
+  ],
+
+  // Single-app, single-tenant mode. APP_ID and APP_KEY are public identifiers
+  // safe to commit. APP_SECRET is NOT listed here — it is supplied as a
+  // Cloudflare Secret, either by the "Deploy to Cloudflare" flow, by
+  // `wrangler secret put APP_SECRET` in production, or by a `.dev.vars` file
+  // locally. The server returns 503 until APP_SECRET is a real value
+  // (>= 16 chars, not the placeholder).
+  "vars": {
+    "APP_ID": "gondor-app",
+    "APP_KEY": "7c26cfb15f7eabeb407c72c9e1cdc89a"
+  }
+}

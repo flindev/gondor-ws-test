@@ -1,0 +1,6 @@
+# Copy to `.dev.vars` (gitignored) for local development with `wrangler dev`.
+# In production, set APP_SECRET via: `wrangler secret put APP_SECRET`.
+
+# Shared HMAC secret. Must be >= 16 characters. Must match PUSHER_APP_SECRET in Laravel.
+# Generate one with:  openssl rand -hex 32
+APP_SECRET=dev-secret-at-least-sixteen-chars
